@@ -18,29 +18,34 @@ skills/
 1. Create `skills/<skill-name>/SKILL.md` with YAML frontmatter (`name`, `description`) and clear instructions.
 2. Open a PR; keep scope to one new skill or one focused change per PR when possible.
 
-## Using in Coder workspaces (Cursor agents)
+## Install (Cursor / Coder workspaces)
 
-Cursor loads **project** skills from `.cursor/skills/<skill-name>/` in the workspace. To inject skills from this repo into a Coder workspace, pick one of these patterns:
+Cursor loads **project** skills from `.cursor/skills/<skill-name>/` in the workspace (or **user** skills from `~/.cursor/skills/`).
 
-1. **Clone + symlink (per skill)** — In the workspace startup script or template `startup_script`:
+### Installer script
 
-   ```bash
-   git clone --depth 1 https://github.com/DataKnifeAI/agent-skills.git "$HOME/.cache/agent-skills"
-   mkdir -p "$PWD/.cursor/skills"
-   ln -sf "$HOME/.cache/agent-skills/skills/gh-cli" "$PWD/.cursor/skills/gh-cli"
-   ln -sf "$HOME/.cache/agent-skills/skills/glab-cli" "$PWD/.cursor/skills/glab-cli"
-   ln -sf "$HOME/.cache/agent-skills/skills/coder-cli" "$PWD/.cursor/skills/coder-cli"
-   ln -sf "$HOME/.cache/agent-skills/skills/kubectl-cli" "$PWD/.cursor/skills/kubectl-cli"
-   ln -sf "$HOME/.cache/agent-skills/skills/rancher-cli" "$PWD/.cursor/skills/rancher-cli"
-   ```
+From a checkout of this repository:
 
-   Point `git clone` at a branch, tag, or internal mirror if you pin versions.
+```bash
+./scripts/install-skills.sh              # ./.cursor/skills (symlinks)
+./scripts/install-skills.sh --user       # ~/.cursor/skills
+./scripts/install-skills.sh --only gh-cli,kubectl-cli
+./scripts/install-skills.sh --copy       # copy trees instead of symlinks
+```
 
-2. **Single project checkout** — If the repo is already a submodule or checked out beside the project, symlink from that path into `.cursor/skills/` the same way.
+Bootstrap from GitHub without cloning the full repo yourself (shallow clone to the cache, then symlink into `./.cursor/skills`):
 
-3. **User-wide skills** — Alternatively install under `~/.cursor/skills/` on the image (bakes skills into the template for all workspaces on that image).
+```bash
+bash -c 'curl -fsSL https://raw.githubusercontent.com/DataKnifeAI/agent-skills/main/scripts/install-skills.sh | bash -s -- --clone https://github.com/DataKnifeAI/agent-skills.git'
+```
 
-Ensure `glab`, `gh`, `coder`, `kubectl`, and/or `rancher` are on `PATH` in the workspace image (or install them in the template); the skills only document how to use the CLIs.
+Use `--clone` with an internal mirror URL if your deployment mirrors this repo. Override the cache directory with `--cache DIR`. Run `./scripts/install-skills.sh --help` for all options.
+
+### Manual install
+
+If you prefer not to use the script: clone or submodule this repo, then symlink each `skills/<name>/` directory into `.cursor/skills/<name>/`, or install under `~/.cursor/skills/`.
+
+Ensure `glab`, `gh`, `coder`, `kubectl`, and/or `rancher` are on `PATH` in the workspace image when those skills apply; the skills document CLI usage only.
 
 ## License
 
