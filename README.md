@@ -31,6 +31,7 @@ Cursor loads **project** skills from `.cursor/skills/<skill-name>/` in the works
    ln -sf "$HOME/.cache/agent-skills/skills/glab-cli" "$PWD/.cursor/skills/glab-cli"
    ln -sf "$HOME/.cache/agent-skills/skills/coder-cli" "$PWD/.cursor/skills/coder-cli"
    ln -sf "$HOME/.cache/agent-skills/skills/kubectl-cli" "$PWD/.cursor/skills/kubectl-cli"
+   ln -sf "$HOME/.cache/agent-skills/skills/rancher-cli" "$PWD/.cursor/skills/rancher-cli"
    ```
 
    Point `git clone` at a branch, tag, or internal mirror if you pin versions.
@@ -39,7 +40,7 @@ Cursor loads **project** skills from `.cursor/skills/<skill-name>/` in the works
 
 3. **User-wide skills** — Alternatively install under `~/.cursor/skills/` on the image (bakes skills into the template for all workspaces on that image).
 
-Ensure `glab`, `gh`, `coder`, and/or `kubectl` are on `PATH` in the workspace image (or install them in the template); the skills only document how to use the CLIs.
+Ensure `glab`, `gh`, `coder`, `kubectl`, and/or `rancher` are on `PATH` in the workspace image (or install them in the template); the skills only document how to use the CLIs.
 
 ## License
 
