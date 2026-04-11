@@ -16,7 +16,7 @@ description: >-
 
 ## Prerequisites
 
-- `gh` installed (`gh version`).
+- `gh` installed (`gh version`). Documentation: [GitHub CLI manual](https://cli.github.com/manual/).
 - Authentication: `gh auth status`. If needed, `gh auth login` (interactive) or token-based flows documented in `gh auth login --help`.
 
 ## Patterns
@@ -45,5 +45,5 @@ description: >-
 
 ## References
 
-- `gh help` and subcommand help
-- [GitHub CLI manual](https://cli.github.com/manual/)
+- **Official documentation:** [GitHub CLI manual](https://cli.github.com/manual/)
+- **Local help:** `gh help`, `gh <cmd> --help` (authoritative for your installed `gh` version)

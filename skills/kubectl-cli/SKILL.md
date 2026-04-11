@@ -17,7 +17,7 @@ description: >-
 
 ## Prerequisites
 
-- `kubectl` installed (`kubectl version --client`).
+- `kubectl` installed (`kubectl version --client`). Documentation: [kubectl reference](https://kubernetes.io/docs/reference/kubectl/).
 - **Cluster access**: valid kubeconfig (default `~/.kube/config`, or `KUBECONFIG` with one or more files).
 - **Context**: `kubectl config current-context`; switch with `kubectl config use-context` or pass `--context` per command.
 - **Namespace**: use `-n <namespace>` or `-A` / `--all-namespaces` when not using `default`.
@@ -51,5 +51,5 @@ description: >-
 
 ## References
 
-- `kubectl help` and subcommand help
-- [kubectl reference](https://kubernetes.io/docs/reference/kubectl/)
+- **Official documentation:** [kubectl reference](https://kubernetes.io/docs/reference/kubectl/)
+- **Local help:** `kubectl help`, `kubectl <cmd> --help`, `kubectl explain <resource>` (authoritative for your installed `kubectl` version)

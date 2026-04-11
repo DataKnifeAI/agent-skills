@@ -17,7 +17,7 @@ description: >-
 
 ## Prerequisites
 
-- `glab` installed (`glab version`). Install: see [GitLab CLI docs](https://docs.gitlab.com/cli/).
+- `glab` installed (`glab version`). Install and reference: [GitLab CLI documentation](https://docs.gitlab.com/cli/).
 - **Auth**: `glab auth login` (interactive) or tokens. Common env vars:
   - `GITLAB_TOKEN` (or `GITLAB_ACCESS_TOKEN` / `OAUTH_TOKEN` per deployment)
   - `GITLAB_HOST` or `GL_HOST` for self-managed GitLab (e.g. `https://gitlab.example.com`)
@@ -47,5 +47,5 @@ description: >-
 
 ## References
 
-- `glab help` and subcommand help
-- [GitLab CLI documentation](https://docs.gitlab.com/cli/)
+- **Official documentation:** [GitLab CLI](https://docs.gitlab.com/cli/)
+- **Local help:** `glab --help`, `glab <cmd> --help` (authoritative for your installed `glab` version)

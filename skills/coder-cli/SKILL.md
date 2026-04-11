@@ -17,7 +17,7 @@ description: >-
 
 ## Prerequisites
 
-- `coder` installed (`coder version`).
+- `coder` installed (`coder version`). CLI reference: [Coder CLI reference](https://coder.com/docs/reference/cli).
 - **Deployment URL**: `--url` or `$CODER_URL`.
 - **Auth**: `coder login` or `$CODER_SESSION_TOKEN` (prefer the env var for non-interactive use; see `coder login --help`).
 - Global config directory: `$CODER_CONFIG_DIR` (default shown in `coder --help` under `--global-config`).
@@ -53,5 +53,6 @@ Exact flags and subcommands vary by Coder version; always prefer `coder <cmd> --
 
 ## References
 
-- `coder --help`, `coder <subcommand> --help`
-- [Coder documentation](https://coder.com/docs) (CLI and workspaces)
+- **Official documentation:** [Coder CLI reference](https://coder.com/docs/reference/cli)
+- **Local help:** `coder --help`, `coder <subcommand> --help` (authoritative for your installed `coder` version)
+- Broader product docs: [Coder documentation](https://coder.com/docs) (workspaces, templates, admin)
