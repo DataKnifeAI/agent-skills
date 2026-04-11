@@ -22,6 +22,23 @@ skills/
 
 Cursor loads **project** skills from `.cursor/skills/<skill-name>/` in the workspace (or **user** skills from `~/.cursor/skills/`).
 
+### Makefile
+
+From a checkout of this repository:
+
+```bash
+make help           # list targets (default)
+make install        # ./.cursor/skills (symlinks)
+make install-user
+make dry-run
+make list           # skill directory names
+make validate       # each skills/*/ must contain SKILL.md
+make clone-install  # optional: CLONE_URL=… CACHE=…
+make clean-project  # rm -rf ./.cursor/skills
+```
+
+Subset: `make install ONLY=gh-cli,kubectl-cli`.
+
 ### Installer script
 
 From a checkout of this repository:
