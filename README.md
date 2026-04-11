@@ -29,6 +29,28 @@ skills/
 1. Create `skills/<skill-name>/SKILL.md` with YAML frontmatter (`name`, `description`) and clear instructions.
 2. Open a PR; keep scope to one new skill or one focused change per PR when possible.
 
+## Using in Coder workspaces (Cursor agents)
+
+Cursor loads **project** skills from `.cursor/skills/<skill-name>/` in the workspace. To inject skills from this repo into a Coder workspace, pick one of these patterns:
+
+1. **Clone + symlink (per skill)** — In the workspace startup script or template `startup_script`:
+
+   ```bash
+   git clone --depth 1 https://github.com/DataKnifeAI/agent-skills.git "$HOME/.cache/agent-skills"
+   mkdir -p "$PWD/.cursor/skills"
+   ln -sf "$HOME/.cache/agent-skills/skills/gh-cli" "$PWD/.cursor/skills/gh-cli"
+   ln -sf "$HOME/.cache/agent-skills/skills/glab-cli" "$PWD/.cursor/skills/glab-cli"
+   ln -sf "$HOME/.cache/agent-skills/skills/coder-cli" "$PWD/.cursor/skills/coder-cli"
+   ```
+
+   Point `git clone` at a branch, tag, or internal mirror if you pin versions.
+
+2. **Single project checkout** — If the repo is already a submodule or checked out beside the project, symlink from that path into `.cursor/skills/` the same way.
+
+3. **User-wide skills** — Alternatively install under `~/.cursor/skills/` on the image (bakes skills into the template for all workspaces on that image).
+
+Ensure `glab`, `gh`, and/or `coder` are on `PATH` in the workspace image or install them in the template; the skills only document how to use the CLIs.
+
 ## License
 
-Add a `LICENSE` file when the org chooses a default policy for this repository.
+This repository is licensed under the MIT License — see [LICENSE](LICENSE).
