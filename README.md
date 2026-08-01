@@ -1,5 +1,8 @@
 # DataKnifeAI agent skills
 
+![Shared Cursor/agent skills](docs/assets/agent-skills-hero.jpg)
+
+
 Shared [Cursor agent skills](https://cursor.com/docs/context/skills) (and compatible tooling) for DataKnifeAI repositories.
 
 ## Layout
