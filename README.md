@@ -69,4 +69,4 @@ Ensure `glab`, `gh`, `coder`, `kubectl`, and/or `rancher` are on `PATH` in the w
 
 ## License
 
-This repository is licensed under the MIT License — see [LICENSE](LICENSE).
+This repository is licensed under the Apache License 2.0 — see [LICENSE](LICENSE).
