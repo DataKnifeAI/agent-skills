@@ -48,16 +48,16 @@ validate: ## Ensure each skills/*/ has a SKILL.md; each rules/*.mdc is non-empty
 	echo "OK: all skills under $(SKILLS_DIR) have SKILL.md"
 	@$(MAKE) --no-print-directory validate-rules
 
-install-rules: ## Install shared .mdc rules into ./.cursor/rules (symlinks)
+install-rules: ## Refresh shared .mdc into ./.cursor/rules (symlinks; optional)
 	@"$(RULES_SCRIPT)" $(INSTALL_FLAGS)
 
-install-rules-user: ## Install shared rules into ~/.cursor/rules (symlinks)
+install-rules-user: ## Refresh shared rules into ~/.cursor/rules (symlinks; optional)
 	@"$(RULES_SCRIPT)" --user $(INSTALL_FLAGS)
 
-install-rules-copy: ## Copy shared .mdc rules into ./.cursor/rules (no symlinks)
+install-rules-copy: ## Refresh/vendored copy of shared .mdc into ./.cursor/rules
 	@"$(RULES_SCRIPT)" --copy $(INSTALL_FLAGS)
 
-dry-run-rules: ## Show what rule install would do (no filesystem changes)
+dry-run-rules: ## Show what rule refresh would do (no filesystem changes)
 	@"$(RULES_SCRIPT)" --dry-run $(INSTALL_FLAGS)
 
 list-rules: ## List shared rule basenames under rules/
@@ -76,7 +76,7 @@ validate-rules: ## Ensure each rules/*.mdc exists and is non-empty
 clone-install: ## Shallow-clone CLONE_URL into CACHE, then install skills to ./.cursor/skills
 	@"$(INSTALL_SCRIPT)" --clone "$(CLONE_URL)" --cache "$(CACHE)" $(INSTALL_FLAGS)
 
-clone-install-rules: ## Shallow-clone CLONE_URL into CACHE, then copy rules to ./.cursor/rules
+clone-install-rules: ## Shallow-clone CLONE_URL into CACHE, then refresh/copy rules to ./.cursor/rules
 	@"$(RULES_SCRIPT)" --clone "$(CLONE_URL)" --cache "$(CACHE)" --copy $(INSTALL_FLAGS)
 
 clean-project: ## Remove ./.cursor/skills (project skill links only; destructive)

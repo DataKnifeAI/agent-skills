@@ -33,4 +33,4 @@ Org-wide defaults for every DataKnifeAI repository. Project rules in `.cursor/ru
 
 ## Overrides
 
-Add `.cursor/rules/<project>.mdc` (or file-glob rules) for stack-specific conventions. Keep this common rule installed and unchanged.
+Product repos vendor this file at `.cursor/rules/dataknifeai-common.mdc`. Add `.cursor/rules/<project>.mdc` (or file-glob rules) for stack-specific conventions; keep this common rule unchanged.
