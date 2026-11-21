@@ -1,0 +1,21 @@
+---
+description: Project-specific agent guidance (overrides/narrows org common rule)
+alwaysApply: true
+---
+
+# <Project name>
+
+One short paragraph: what this repo is and who it serves.
+
+## Key paths
+
+- `path/` — purpose
+
+## Conventions
+
+- Stack-specific standards that differ from or extend the org common rule
+- Patterns agents should follow when editing this codebase
+
+## Out of scope
+
+- What agents should not do here (e.g. touching generated files, live secrets)
