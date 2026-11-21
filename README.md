@@ -26,12 +26,7 @@ rules/
 
 Org-wide agent defaults live in [`rules/dataknifeai-common.mdc`](rules/dataknifeai-common.mdc). **Vendor a copy** into each product repo at `.cursor/rules/dataknifeai-common.mdc` and commit it; add thin project overrides beside it. Normal clones then pick up the rules with no install step — see [`rules/README.md`](rules/README.md).
 
-To refresh a vendored copy from this canonical source (optional; also useful for agent-workspace):
-
-```bash
-make install-rules-copy
-./scripts/install-rules.sh --copy
-```
+When the org baseline changes, refresh by re-copying the canonical file from this repo into each product repo’s `.cursor/rules/dataknifeai-common.mdc`.
 
 ## Install skills (Cursor / Coder workspaces)
 
@@ -45,10 +40,8 @@ From a checkout of this repository:
 make help                 # list targets (default)
 make install              # ./.cursor/skills (symlinks)
 make install-user
-make install-rules-copy   # refresh vendored .mdc into ./.cursor/rules
 make dry-run
 make list                 # skill directory names
-make list-rules
 make validate             # skills + rules
 make clone-install        # optional: CLONE_URL=… CACHE=…
 make clean-project        # rm -rf ./.cursor/skills
@@ -65,7 +58,6 @@ From a checkout of this repository:
 ./scripts/install-skills.sh --user       # ~/.cursor/skills
 ./scripts/install-skills.sh --only gh-cli,kubectl-cli
 ./scripts/install-skills.sh --copy       # copy trees instead of symlinks
-./scripts/install-rules.sh --copy        # refresh vendored rules into ./.cursor/rules
 ```
 
 Bootstrap skills from GitHub without cloning the full repo yourself (shallow clone to the cache, then symlink into `./.cursor/skills`):
@@ -74,7 +66,7 @@ Bootstrap skills from GitHub without cloning the full repo yourself (shallow clo
 bash -c 'curl -fsSL https://raw.githubusercontent.com/DataKnifeAI/agent-skills/main/scripts/install-skills.sh | bash -s -- --clone https://github.com/DataKnifeAI/agent-skills.git'
 ```
 
-The rules installer supports the same `--clone` pattern when refreshing a vendored copy from a remote source. Use `--clone` with an internal mirror URL if your deployment mirrors this repo. Override the cache directory with `--cache DIR`. Run `./scripts/install-skills.sh --help` or `./scripts/install-rules.sh --help` for all options.
+Use `--clone` with an internal mirror URL if your deployment mirrors this repo. Override the cache directory with `--cache DIR`. Run `./scripts/install-skills.sh --help` for all options.
 
 ### Manual install
 

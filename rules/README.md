@@ -13,22 +13,11 @@ rules/
     project-override.mdc.example
 ```
 
-## Refresh from canonical source (optional)
+## How to use in a product repo
 
-`install-rules.sh` / `make install-rules*` sync or refresh a vendored copy (and are useful for agent-workspace). They are **not** required for normal clone use.
-
-From this checkout (prefer **copy** so product repos stay self-contained):
-
-```bash
-./scripts/install-rules.sh --copy
-make install-rules-copy
-```
-
-Bootstrap a refresh without a local clone:
-
-```bash
-bash -c 'curl -fsSL https://raw.githubusercontent.com/DataKnifeAI/agent-skills/main/scripts/install-rules.sh | bash -s -- --clone https://github.com/DataKnifeAI/agent-skills.git --copy'
-```
+1. Copy [`dataknifeai-common.mdc`](dataknifeai-common.mdc) into the product repo at `.cursor/rules/dataknifeai-common.mdc` and commit it.
+2. Add project overrides as needed (see below).
+3. When the org baseline changes, refresh by re-copying this canonical file into the product repo.
 
 ## Per-project overrides
 
